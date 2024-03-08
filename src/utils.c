@@ -3,17 +3,19 @@
 void _input_path(char *path) { scanf("%1023s", path); }
 
 int _validate_path(char *path) {
-    FILE *f1 = fopen(path, "r");
+    FILE const *f1 = fopen(path, "r");
     int res = 1;
     if (f1 == NULL) {
         res--;
+    } else {
+        fclose(f1);
     }
     return res;
 }
 
 void _check_duplicates(char *path1, char *path2) {
-    FILE *f1 = fopen(path1, "r");
-    FILE *f2 = fopen(path2, "r");
+    FILE const *f1 = fopen(path1, "r");
+    FILE const *f2 = fopen(path2, "r");
     char line1[MAX_STR_LEN] = {0};
     char line2[MAX_STR_LEN] = {0};
     int res = 1;
